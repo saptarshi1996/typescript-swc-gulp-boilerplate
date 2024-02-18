@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/index.ts",
-    "prepare": "husky",
+    "dev": "gulp watch",
     "build": "gulp build",
+    "sync:env": "build-sync .env",
     "start": "node dist/index.js",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/node": "^20.11.19",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "build-sync": "^2.6.1",
     "cspell": "^8.3.2",
     "eslint": "^8.56.0",
     "eslint-config-standard-with-typescript": "^43.0.1",

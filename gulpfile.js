@@ -3,6 +3,7 @@ const fsExtra = require('fs-extra')
 const gulp = require('gulp')
 const swc = require('gulp-swc')
 const terser = require('gulp-terser')
+const nodemon = require('gulp-nodemon')
 
 const swcOptions = {
   jsc: {
@@ -29,12 +30,22 @@ const buildProject = function () {
   return gulp.src('src/**/*.ts')
     .pipe(swc(swcOptions))
     .pipe(terser({
-      mangle: true, // Enable variable name mangling
+      mangle: true,
       compress: {
-        unused: true, // Remove unused code
+        unused: true,
       },
     }))
     .pipe(gulp.dest('dist'))
 }
 
+const watch = function (done) {
+  return nodemon({
+    script: 'src/index.ts',
+    watch: 'src/',
+    ext: 'ts',
+    delay: 1000
+  }).on('exit', function () { done() })
+}
+
 exports.build = gulp.series([clear, buildProject, generatePackageJson])
+exports.watch = watch

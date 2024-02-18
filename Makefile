@@ -4,10 +4,11 @@ help:
 setup:
 	@echo "Setting up development environment"
 	npm install
+	npm run husky
+	npm run sync:env
 
 deploy:
 	npm install
 	npm run build
 	rm -rf node_modules/
 	npm install --omit=dev
-	npm publish
