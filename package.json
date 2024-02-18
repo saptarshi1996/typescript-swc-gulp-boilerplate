@@ -2,7 +2,7 @@
   "name": "typescript-swc-gulp-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "gulp watch",
     "build": "gulp build",
